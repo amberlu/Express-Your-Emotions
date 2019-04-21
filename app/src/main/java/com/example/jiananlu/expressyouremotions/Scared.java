@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class Scared extends AppCompatActivity {
 
-    private Button enter;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,16 +18,16 @@ public class MainActivity extends AppCompatActivity {
             this.getSupportActionBar().hide();
         }
         catch (NullPointerException e){}
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_scared);
         clickOnButton();
     }
 
     private void clickOnButton(){
-        enter = (Button) findViewById(R.id.enter);
-        enter.setOnClickListener(new View.OnClickListener() {
+        button = (Button) findViewById(R.id.scared_back);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(MainActivity.this, Homepage.class);
+                Intent it = new Intent(Scared.this, Task1_1.class);
                 startActivity(it);
             }
         });
