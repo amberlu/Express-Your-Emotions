@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class Task3 extends AppCompatActivity {
 
-    private Button enter;
+    private Button back, letsGo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,16 +18,24 @@ public class MainActivity extends AppCompatActivity {
             this.getSupportActionBar().hide();
         }
         catch (NullPointerException e){}
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_task3);
         clickOnButton();
     }
 
     private void clickOnButton(){
-        enter = (Button) findViewById(R.id.enter);
-        enter.setOnClickListener(new View.OnClickListener() {
+        back  = (Button) findViewById(R.id.b3_1);
+        letsGo = (Button) findViewById(R.id.b3_2);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(MainActivity.this, Homepage.class);
+                Intent it = new Intent(Task3.this, Homepage.class);
+                startActivity(it);
+            }
+        });
+        letsGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Task3.this, Task3.class);
                 startActivity(it);
             }
         });

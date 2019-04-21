@@ -16,6 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Homepage" />
+        <activity android:name=".Task1" />
+        <activity android:name=".Task2" />
+        <activity android:name=".Task3" />
+        <activity android:name=".Task1_1" />
+        <activity android:name=".Angry" />
+        <activity android:name=".Happy" />
+        <activity android:name=".Sad" />
+        <activity android:name=".Bored" />
+        <activity android:name=".Surprised" />
+        <activity android:name=".Scared"></activity>
     </application>
 
 </manifest>

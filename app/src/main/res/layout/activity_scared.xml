@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homepage"
-    tools:context=".MainActivity">
+    android:background="@drawable/scared"
+    tools:context=".Scared">
 
     <Button
-        android:id="@+id/enter"
+        android:id="@+id/scared_back"
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
-        android:layout_width="179dp"
-        android:layout_height="81dp"
-        android:layout_marginBottom="84dp"
+        android:layout_width="132dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
