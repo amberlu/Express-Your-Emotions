@@ -26,7 +26,14 @@
         <activity android:name=".Sad" />
         <activity android:name=".Bored" />
         <activity android:name=".Surprised" />
-        <activity android:name=".Scared"></activity>
+        <activity android:name=".Scared" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Task1_emotion" />
+        <activity android:name=".IntroPage"></activity>
     </application>
 
 </manifest>

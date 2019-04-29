@@ -28,21 +28,30 @@ public class Homepage extends AppCompatActivity {
         go1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, Task1.class);
+                Intent it = new Intent(Homepage.this, IntroPage.class);
+                it.putExtra("content", "Look at the pictures, and learn what they mean!");
+                it.putExtra("task", "task1");
+                it.putExtra("pic_id", R.drawable.task1_intro);
                 startActivity(it);
             }
         });
         go2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, Task2.class);
+                Intent it = new Intent(Homepage.this, IntroPage.class);
+                it.putExtra("content", "Make your face look like the picture of the character!");
+                it.putExtra("task", "task2");
+                it.putExtra("pic_id", R.drawable.task2_intro);
                 startActivity(it);
             }
         });
         go3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Homepage.this, Task3.class);
+                Intent it = new Intent(Homepage.this, IntroPage.class);
+                it.putExtra("content", "Lets see how well you know your emotions!");
+                it.putExtra("task", "task3");
+                it.putExtra("pic_id", R.drawable.task3_intro);
                 startActivity(it);
             }
         });

@@ -1,0 +1,28 @@
+{
+"emotions":[
+	{
+		"picture": "bored",
+		"content": "When you are taking a class you don’t like, you feel bored!"
+	},
+	{
+		"picture": "happy",
+		"content": "When you get what you want, you feel happy!"
+	},
+	{
+		"picture": "scared",
+		"content": "When something spooks you, you get scared!"
+	},
+	{
+		"picture": "sad",
+		"content": "When you lose something, you feel sad!"
+	},
+	{
+		"picture": "surprised",
+		"content": "When you see something unexpected, you feel surprised!"
+	},
+	{
+		"picture": "angry",
+		"content": "When something you don’t like happens, you feel angry!"
+	}
+]
+}
