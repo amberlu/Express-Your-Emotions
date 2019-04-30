@@ -15,16 +15,26 @@
         android:layout_height="67dp"
         android:layout_marginStart="36dp"
         android:layout_marginBottom="16dp"
+
+        android:background="@drawable/back"
+        android:fontFamily="@font/schoolbell"
+        android:textColor="@color/purpleText"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/takePic_2"
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
-        android:layout_width="155dp"
-        android:layout_height="62dp"
+        android:layout_width="188dp"
+        android:layout_height="66dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
+        android:background="@color/beige"
+        android:fontFamily="@font/schoolbell"
+        android:text="Take Picture"
+        android:textColor="@color/purpleText"
+        android:textSize="27sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -155,7 +155,6 @@ public class Task2_1 extends AppCompatActivity {
 
         if (cameraDevice == null) {
             return;
-
         }
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         try {
@@ -380,6 +379,16 @@ public class Task2_1 extends AppCompatActivity {
         backgroundThread = new HandlerThread("background for camera");
         backgroundThread.start();
         backgroundHanlder = new Handler(backgroundThread.getLooper());
+    }
+
+
+
+
+    private void processEmotion() {
+
+
+
+
     }
 
 
