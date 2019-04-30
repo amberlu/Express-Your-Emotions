@@ -23,7 +23,7 @@ public class Task2 extends AppCompatActivity {
     }
 
     private void clickOnButton(){
-        back  = (Button) findViewById(R.id.b2_1);
+        back  = (Button) findViewById(R.id.back2_1);
         letsGo = (Button) findViewById(R.id.b2_2);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

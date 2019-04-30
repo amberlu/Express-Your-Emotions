@@ -8,7 +8,7 @@
     tools:context=".Task2">
 
     <Button
-        android:id="@+id/b2_1"
+        android:id="@+id/back2_1"
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
         android:layout_width="113dp"
         android:layout_height="67dp"
