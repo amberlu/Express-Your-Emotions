@@ -22,6 +22,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.io.*;
 import android.app.*;
@@ -42,12 +44,10 @@ public class EmotionRecogTestClass extends AppCompatActivity {
 
     private final int PICK_IMAGE = 1;
     private ProgressDialog detectionProgressDialog;
-
     private final String apiKey = "2d1dbe92587345da9bf698b0d221beb0";
     private final String apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0/";
 //
     private final FaceServiceClient faceServiceClient = new FaceServiceRestClient(apiEndpoint,apiKey);
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,13 +58,10 @@ public class EmotionRecogTestClass extends AppCompatActivity {
 //            this.getSupportActionBar().hide();
 //        }
 //        catch (NullPointerException e){e.printStackTrace();}
-
         process = findViewById(R.id.process);
         filler = findViewById(R.id.emo_filler);
-
         bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.sad_baby);
         filler.setImageBitmap(bitmap);
-
         process.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,10 +73,8 @@ public class EmotionRecogTestClass extends AppCompatActivity {
             }
         });
 
-
         detectionProgressDialog = new ProgressDialog(this);
     }
-
 
 //
 //    @Override
@@ -110,6 +105,10 @@ public class EmotionRecogTestClass extends AppCompatActivity {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         imageBitmap.compress(Bitmap.CompressFormat.JPEG,100, outputStream);
         ByteArrayInputStream inputStream = new ByteArrayInputStream((outputStream.toByteArray()));
+
+        final FaceServiceClient.FaceAttributeType[] requiredFaceAttributes = new FaceServiceClient.FaceAttributeType[1];
+        requiredFaceAttributes[0] = FaceServiceClient.FaceAttributeType.Emotion;
+
         AsyncTask<InputStream,String, Face[]> detectTask =  new AsyncTask<InputStream, String, Face[]>() {
 
             String exceptionMessage = "";
@@ -122,7 +121,7 @@ public class EmotionRecogTestClass extends AppCompatActivity {
                             inputStreams[0],
                             true,         // returnFaceId
                             false,        // returnFaceLandmarks
-                            null          // returnFaceAttributes:
+                            requiredFaceAttributes          // returnFaceAttributes:
                                 /* new FaceServiceClient.FaceAttributeType[] {
                                     FaceServiceClient.FaceAttributeType.Age,
                                     FaceServiceClient.FaceAttributeType.Gender }
@@ -166,10 +165,12 @@ public class EmotionRecogTestClass extends AppCompatActivity {
                 }
                 if (result == null) return;
 
+                String emotion = getEmotion(result);
                 ImageView imageView = findViewById(R.id.emo_filler);
                 imageView.setImageBitmap(
-                        drawFaceRectanglesOnBitmap(imageBitmap, result));
+                        drawFaceRectanglesOnBitmap(imageBitmap, result,emotion));
                 imageBitmap.recycle();
+                Toast.makeText(EmotionRecogTestClass.this,emotion, Toast.LENGTH_SHORT).show();
             }
         };
         detectTask.execute(inputStream);
@@ -186,7 +187,7 @@ public class EmotionRecogTestClass extends AppCompatActivity {
     }
 
     private static Bitmap drawFaceRectanglesOnBitmap(
-            Bitmap originalBitmap, Face[] faces) {
+            Bitmap originalBitmap, Face[] faces,String emotion) {
         Bitmap bitmap = originalBitmap.copy(Bitmap.Config.ARGB_8888, true);
         Canvas canvas = new Canvas(bitmap);
         Paint paint = new Paint();
@@ -205,6 +206,46 @@ public class EmotionRecogTestClass extends AppCompatActivity {
                         paint);
             }
         }
+
         return bitmap;
     }
+
+    private static String getEmotion(Face[] v_res) {
+
+        FaceAttribute faceAttributes = v_res[0].faceAttributes;
+        Emotion cur_face_emotion = faceAttributes.emotion;
+
+        List<Double> emo_scores = new ArrayList<>();
+        emo_scores.add(cur_face_emotion.sadness);
+        emo_scores.add(cur_face_emotion.happiness);
+        emo_scores.add(cur_face_emotion.anger);
+        emo_scores.add(cur_face_emotion.surprise);
+        emo_scores.add(cur_face_emotion.fear);
+        emo_scores.add(cur_face_emotion.neutral);
+        emo_scores.add(cur_face_emotion.disgust);
+        emo_scores.add(cur_face_emotion.contempt);
+
+        Collections.sort(emo_scores);
+        double expressed_emotion = emo_scores.get(emo_scores.size() - 1);
+
+        if (expressed_emotion == cur_face_emotion.sadness) {
+            return "Sadness";
+        } else if (expressed_emotion == cur_face_emotion.happiness) {
+            return "Happy";
+        } else if (expressed_emotion == cur_face_emotion.anger) {
+            return "Angry";
+        } else if (expressed_emotion == cur_face_emotion.surprise) {
+            return "Surprised";
+        } else if (expressed_emotion == cur_face_emotion.fear) {
+            return "Scared";
+        } else if (expressed_emotion == cur_face_emotion.disgust) {
+            return "Disgusted";
+        } else if (expressed_emotion == cur_face_emotion.contempt) {
+            return "Upset";
+        } else if (expressed_emotion == cur_face_emotion.neutral) {
+            return "No emotion, neutral!";
+        }
+        return "Could not determine emotion";
+    }
+
 }
