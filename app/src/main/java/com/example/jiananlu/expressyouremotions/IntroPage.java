@@ -1,6 +1,7 @@
 package com.example.jiananlu.expressyouremotions;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,7 +40,16 @@ public class IntroPage extends AppCompatActivity {
 
     private void clickOnButton(){
         letsgo = (Button) findViewById(R.id.letsgo);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "Schoolbell.ttf");
+        letsgo.setText("Let's go");
+        letsgo.setTypeface(typeface);
+        letsgo.setTextSize(20);
+
         back = (Button) findViewById(R.id.back);
+        back.setText("Back");
+        back.setTypeface(typeface);
+        back.setTextSize(20);
+
         letsgo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
