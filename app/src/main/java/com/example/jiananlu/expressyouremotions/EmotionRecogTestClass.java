@@ -46,7 +46,6 @@ public class EmotionRecogTestClass extends AppCompatActivity {
     private ProgressDialog detectionProgressDialog;
     private final String apiKey = "2d1dbe92587345da9bf698b0d221beb0";
     private final String apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0/";
-//
     private final FaceServiceClient faceServiceClient = new FaceServiceRestClient(apiEndpoint,apiKey);
 
     @Override
@@ -65,10 +64,6 @@ public class EmotionRecogTestClass extends AppCompatActivity {
         process.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//                intent.setType("image/*");
-//                startActivityForResult(Intent.createChooser(
-//                        intent, "Select Picture"), PICK_IMAGE);
                 detectAndFrame(bitmap);
             }
         });
