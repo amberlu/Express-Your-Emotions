@@ -38,7 +38,7 @@ import android.provider.*;
 
 public class EmotionRecogTestClass extends AppCompatActivity {
 
-    private Button process;
+    private Button process,switch_picture;
     private ImageView filler;
     private Bitmap bitmap;
 
@@ -57,6 +57,8 @@ public class EmotionRecogTestClass extends AppCompatActivity {
 //            this.getSupportActionBar().hide();
 //        }
 //        catch (NullPointerException e){e.printStackTrace();}
+
+        switch_picture = findViewById(R.id.switch_image);
         process = findViewById(R.id.process);
         filler = findViewById(R.id.emo_filler);
         bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.sad_baby);
@@ -65,6 +67,14 @@ public class EmotionRecogTestClass extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 detectAndFrame(bitmap);
+            }
+        });
+
+        switch_picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.happy_anaya);
+                filler.setImageBitmap(bitmap);
             }
         });
 
@@ -170,6 +180,10 @@ public class EmotionRecogTestClass extends AppCompatActivity {
         };
         detectTask.execute(inputStream);
     }
+
+
+
+
 
     private void showError(String message) {
         new AlertDialog.Builder(this)
