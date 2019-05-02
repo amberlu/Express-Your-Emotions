@@ -41,6 +41,7 @@ public class Task3_question extends AppCompatActivity {
     private Context mContext;
     List<Integer> images;
     List<Boolean> correct_answers;
+    private String correct_emotion;
     private Integer first;
     private Integer second;
     private Integer third;
@@ -91,7 +92,7 @@ public class Task3_question extends AppCompatActivity {
 
         images = new ArrayList<>();
         correct_answers = new ArrayList<>();
-        final String correct_emotion = "happy";
+        correct_emotion = "happy";
         Integer[] correct = happy_faces;
         Integer[] wrong = angry_faces;
 
@@ -149,7 +150,7 @@ public class Task3_question extends AppCompatActivity {
                     Intent it = new Intent(Task3_question.this, Task3_success.class);
                     it.putExtra("first", first);
                     it.putExtra("second", second);
-                    it.putExtra("def", defMap.get(correct_emotion));
+                    it.putExtra("emotion", correct_emotion);
                     startActivity(it);
                 }
                 else {
