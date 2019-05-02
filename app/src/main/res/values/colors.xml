@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="babyblueback">#CDEEF3</color>
+    <color name="purpleText">#420ED6</color>
+    <color name="pinkBack">#FFCAEA</color>
+    <color name="beige">#FACA91</color>
 </resources>

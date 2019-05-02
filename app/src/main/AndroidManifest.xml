@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jiananlu.expressyouremotions">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.hardware.camera2.full" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardware.camera" />
+
+    <!--android:hardwareAccelerated="false"-->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,11 +26,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Homepage" />
         <activity android:name=".Task1" />
         <activity android:name=".Task2" />
         <activity android:name=".Task3_question" />
         <activity android:name=".Task3_success" />
+        <activity android:name=".Task2_1_Setup"/>
+        <activity android:name=".Task2_1"/>
         <activity android:name=".Task1_1" />
         <activity android:name=".Angry" />
         <activity android:name=".Happy" />
@@ -28,6 +41,8 @@
         <activity android:name=".Bored" />
         <activity android:name=".Surprised" />
         <activity android:name=".Scared" />
+        <activity android:name=".EmotionRecogTestClass"/>
+
 
         <meta-data
             android:name="preloaded_fonts"
