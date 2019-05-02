@@ -93,7 +93,7 @@
 
                     <Button
                         android:id="@+id/back"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:background="#FBC18D"
@@ -104,7 +104,7 @@
 
                     <Button
                         android:id="@+id/letsgo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:background="#FBC18D"

@@ -152,7 +152,7 @@ tools:context=".Task3_success">
 
                 <Button
                     android:id="@+id/home"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:background="#FBC18D"
@@ -163,7 +163,7 @@ tools:context=".Task3_success">
 
                 <Button
                     android:id="@+id/next"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="#FBC18D"
