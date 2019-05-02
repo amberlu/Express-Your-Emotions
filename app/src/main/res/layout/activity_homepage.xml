@@ -81,13 +81,19 @@
                         android:textColor="#420ED6"
                         android:textSize="24sp" />
 
+
                     <Button
                         android:id="@+id/go1"
                         android:layout_width="97dp"
                         android:layout_height="45dp"
+                        android:background="#FBC18D"
+                        android:textColor="#420ED6"
+                        android:fontFamily="@font/schoolbell"
+                        android:text="Go"
+                        android:textSize="25dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/go_button"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:layout_marginBottom="15dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -149,9 +155,14 @@
                         android:id="@+id/go2"
                         android:layout_width="97dp"
                         android:layout_height="45dp"
-                        android:background="@drawable/go_button"
+                        android:background="#FBC18D"
+                        android:textColor="#420ED6"
+                        android:fontFamily="@font/schoolbell"
+                        android:text="Go"
+                        android:textSize="25dp"
                         android:layout_gravity="center"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:layout_marginBottom="15dp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -215,8 +226,13 @@
                         android:layout_width="97dp"
                         android:layout_height="45dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/go_button"
-                        android:textAlignment="center" />
+                        android:background="#FBC18D"
+                        android:textColor="#420ED6"
+                        android:fontFamily="@font/schoolbell"
+                        android:text="Go"
+                        android:textSize="25dp"
+                        android:textAlignment="center"
+                        android:layout_marginBottom="15dp"/>
                 </LinearLayout>
             </LinearLayout>
 
