@@ -166,10 +166,13 @@ public class Task2_1 extends AppCompatActivity {
         takePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent it = new Intent(Task2_1.this, Task2.class);
-//                startActivity(it);
                 takePicture();
-
+//                Intent intent = new Intent(Task2_1.this, Task2_2.class);
+////        intent.putExtra("emotion_passed",cur_emotion);
+//                intent.putExtra("correct_face",correct_face);
+//                intent.putExtra("pic_ID",pic_id);
+//                intent.putExtra("img_bytes",image_taken);
+//                startActivity(intent);
             }
         });
     }
@@ -419,8 +422,6 @@ public class Task2_1 extends AppCompatActivity {
         catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private void beginBackgroundThread() {
@@ -511,7 +512,6 @@ public class Task2_1 extends AppCompatActivity {
         intent.putExtra("pic_ID",pic_id);
         intent.putExtra("img_bytes",image_taken);
         startActivity(intent);
-
     }
 
     private void showError(String message) {
