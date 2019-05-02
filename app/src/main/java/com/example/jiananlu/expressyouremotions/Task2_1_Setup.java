@@ -25,8 +25,7 @@ public class Task2_1_Setup extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try
-        {
+        try {
             this.getSupportActionBar().hide();
         }
         catch (NullPointerException e){}

@@ -70,6 +70,8 @@ public class Task2_1 extends AppCompatActivity {
 
     private String cont;
     private Integer pic_id;
+    private boolean correct_face;
+    private byte[] image_taken;
 
     private ImageView emotion_image_display;
     private TextView emotion_text_display;
@@ -131,6 +133,7 @@ public class Task2_1 extends AppCompatActivity {
         }
         catch (NullPointerException e){}
         setContentView(R.layout.activity_task2_1);
+        correct_face = false;
 
         Intent intent = getIntent();
         cont = intent.getStringExtra("content");
@@ -174,7 +177,9 @@ public class Task2_1 extends AppCompatActivity {
     private void startCamera() {
         CameraManager manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         try {
-            camID = manager.getCameraIdList()[0];
+
+            //Switching this for different cameras: {0: back_facing},{1: front_facing}
+            camID = manager.getCameraIdList()[1];
             CameraCharacteristics chars = manager.getCameraCharacteristics(camID);
             StreamConfigurationMap mapper = chars.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
             assert mapper != null;
@@ -240,6 +245,7 @@ public class Task2_1 extends AppCompatActivity {
                         image = imgReader.acquireLatestImage();
                         ByteBuffer buffer = image.getPlanes()[0].getBuffer();
                         byte[] imgBytes = new byte[buffer.capacity()];
+                        image_taken = imgBytes;
                         buffer.get(imgBytes);
                         save(imgBytes);
                     }
@@ -259,10 +265,11 @@ public class Task2_1 extends AppCompatActivity {
 
                 private void save (byte[] bytes) throws IOException {
                     OutputStream outputStream = null;
+
                     try {
                         outputStream = new FileOutputStream(file);
                         outputStream.write(bytes);
-                        detectAndFrame(bytes);
+//                        detectAndFrame(bytes);
                     }finally {
                         if (outputStream != null) {
                             outputStream.close();
@@ -282,7 +289,6 @@ public class Task2_1 extends AppCompatActivity {
             cameraDevice.createCaptureSession(imageOut, new CameraCaptureSession.StateCallback() {
                 @Override
                 public void onConfigured(@NonNull CameraCaptureSession session) {
-
                     try {
                         session.capture(builder.build(), callbackListener,backgroundHanlder);
                     }
@@ -488,7 +494,9 @@ public class Task2_1 extends AppCompatActivity {
 
                 String emotion = getEmotion(result);
                 cur_emotion = emotion;
-
+                if (emotion.toLowerCase() == cont.toLowerCase()) {
+                    correct_face = true;
+                }
 //                ImageView imageView = findViewById(R.id.emo_filler);
 //                imageView.setImageBitmap(
 //                        drawFaceRectanglesOnBitmap(imageBitmap, result,emotion));
@@ -497,6 +505,13 @@ public class Task2_1 extends AppCompatActivity {
             }
         };
         detectTask.execute(inputStream);
+        Intent intent = new Intent(Task2_1.this, Task2_2.class);
+//        intent.putExtra("emotion_passed",cur_emotion);
+        intent.putExtra("correct_face",correct_face);
+        intent.putExtra("pic_ID",pic_id);
+        intent.putExtra("img_bytes",image_taken);
+        startActivity(intent);
+
     }
 
     private void showError(String message) {
