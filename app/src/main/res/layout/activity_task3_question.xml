@@ -57,7 +57,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1.8"
                 android:fontFamily="@font/schoolbell"
-                android:text="Pick all of the happy faces. Hint: There are 2!"
+
                 android:textColor="#696969"
                 android:textSize="25sp"
                 android:layout_marginLeft="10dp"
@@ -90,7 +90,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="30dp"
-                            android:background="@drawable/happy"/>
+                            />
 
                         <CheckBox
                             android:id="@+id/upper_left_check"
@@ -111,7 +111,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="30dp"
-                            android:background="@drawable/happy"/>
+                            />
 
                         <CheckBox
                             android:id="@+id/upper_right_check"
@@ -144,7 +144,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="30dp"
-                            android:background="@drawable/happy"/>
+                            />
 
                         <CheckBox
                             android:id="@+id/lower_mid_check"

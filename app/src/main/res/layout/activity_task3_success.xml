@@ -66,31 +66,21 @@ tools:context=".Task3_success">
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    >
 
-                    <TextView
-                        android:id="@+id/msg_intro"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="3"
-                        android:fontFamily="@font/schoolbell"
-                        android:text="The happy faces are:"
-                        android:textColor="#696969"
-                        android:textSize="18sp"
-                        android:visibility="visible" />
+
 
                     <TextView
                         android:id="@+id/msg_def"
                         android:layout_width="189dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
                         android:fontFamily="@font/schoolbell"
-                        android:text="When you get what you want, you feel happy!"
                         android:textColor="#696969"
                         android:textSize="25sp"
-                        android:visibility="visible" />
+                        android:visibility="visible"
+                        android:scaleType="centerInside"
+                        android:gravity="center"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -105,9 +95,10 @@ tools:context=".Task3_success">
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/first"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/happy" />
+                            />
 
                     </LinearLayout>
 
@@ -117,9 +108,10 @@ tools:context=".Task3_success">
                         android:layout_weight="1">
 
                         <ImageView
+                            android:id="@+id/second"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/happy" />
+                             />
 
 ]
 
