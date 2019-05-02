@@ -39,13 +39,9 @@ public class Task3_success extends AppCompatActivity {
         Intent intent = getIntent();
         first = intent.getIntExtra("first", 0);
         second = intent.getIntExtra("second", 0);
-
-
-
         emotion = intent.getStringExtra("emotion");
 
         String def = readFromJSON(def_json_path);
-
 
         if (first != 0) {
             first_img = findViewById(R.id.first);
@@ -76,7 +72,6 @@ public class Task3_success extends AppCompatActivity {
             }
         });
 
-
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,8 +80,7 @@ public class Task3_success extends AppCompatActivity {
             }
         });
     }
-
-
+    
     private String readFromJSON(String filepath) {
         try {
             InputStream is = this.getAssets().open(filepath);

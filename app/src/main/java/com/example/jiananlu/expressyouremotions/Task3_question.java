@@ -22,7 +22,6 @@ import java.util.Random;
 
 public class Task3_question extends AppCompatActivity {
 
-    //private Button back, letsGo;
     private Button submit;
     private List<Integer[]> emotions;
     private ImageView upperleft;
@@ -38,17 +37,13 @@ public class Task3_question extends AppCompatActivity {
     };
 
     private Random index;
-    private Context mContext;
     List<Integer> images;
     List<Boolean> correct_answers;
     private String correct_emotion;
     private Integer first;
     private Integer second;
     private Integer third;
-    Map<String, String> defMap = new HashMap< String,String>();
     Map<String, Integer[]> drawableMap = new HashMap< String, Integer[]>();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,36 +63,18 @@ public class Task3_question extends AppCompatActivity {
         drawableMap.put("happy", happy_faces);
         drawableMap.put("angry", angry_faces);
 
-        defMap.put("happy", "When you get what you want, you feel happy!");
-        defMap.put("angry", "When something you don't like happens, you feel angry!");
-
         emotions = new ArrayList<Integer[]>(drawableMap.values());
-
-//        emotions = new ArrayList<>();
-//        emotions.add(happy_faces);
-//        emotions.add(angry_faces);
-//        emotions.add("angry");
-//        emotions.add("bored");
-//        emotions.add("happy");
-//        emotions.add("sad");
-//        emotions.add("scared");
-//        emotions.add("surprised");
-
-
-
-        // randomly pick the tested emotion from emotions list
+        // randomly pick the tested emotion from emotions
 //        String correct = randomItem(emotions);
 //        emotions.remove(correct);
 //        String wrong = randomItem(emotions);
 
-        images = new ArrayList<>();
-        correct_answers = new ArrayList<>();
+        images = new ArrayList<>(); // images is a list of three selected drawable
+
+        // TODO: remove static selection after having more emotional images
         correct_emotion = "happy";
         Integer[] correct = happy_faces;
         Integer[] wrong = angry_faces;
-
-        TextView hint = findViewById(R.id.hint);
-        hint.setText("Pick all of the " + correct_emotion + " faces. Hint: There are 2!");
 
         // select 2 images randomly from the correct emotional category
         index = new Random();
@@ -115,10 +92,14 @@ public class Task3_question extends AppCompatActivity {
         third = wrong[index.nextInt(wrong.length)];
         images.add(third);
 
+        // correct_answers is list of three boolean variables indicating
+        // whether upperleft, upperight and lower image is a correct answer or not
+        correct_answers = new ArrayList<>();
 
         // shuffle images list
         Collections.shuffle(images);
         for (int image: images) {
+            // fill in correct_answer
             if (image == first || image == second) {
                 correct_answers.add(true);
             }
@@ -127,25 +108,22 @@ public class Task3_question extends AppCompatActivity {
             }
         }
 
-
-
         // render the corresponding text and images in the layout
-
         upperleft.setImageResource(images.get(0));
         upperright.setImageResource(images.get(1));
         lower.setImageResource(images.get(2));
 
-
-
+        TextView hint = findViewById(R.id.hint);
+        hint.setText("Pick all of the " + correct_emotion + " faces. Hint: There are 2!");
 
         submit = (Button) findViewById(R.id.submit);
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // check user selection
+                // check user answers
                 String msg = check_answers();
 
+                // if correct, proceed to the success page
                 if (msg == "correct") {
                     Intent it = new Intent(Task3_question.this, Task3_success.class);
                     it.putExtra("first", first);
@@ -153,13 +131,12 @@ public class Task3_question extends AppCompatActivity {
                     it.putExtra("emotion", correct_emotion);
                     startActivity(it);
                 }
+                // else, stay in the current page and display helpful messages
                 else {
                     Toast.makeText(getApplicationContext(), msg,Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        //clickOnButton();
     }
 
     private Integer[] randomItem(List<Integer[]> list) {
@@ -167,37 +144,6 @@ public class Task3_question extends AppCompatActivity {
         Integer[] item = list.get(index);
         return item;
     }
-
-//    private void clickOnButton(){
-////        back  = (Button) findViewById(R.id.b3_1);
-////        letsGo = (Button) findViewById(R.id.b3_2);
-//        submit = (Button) findViewById(R.id.submit);
-//
-//        submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // check user selection
-//                String msg = check_answers();
-//
-//                if (msg == "correct") {
-//                    Intent it = new Intent(Task3_question.this, Task3_success.class);
-//                    it.putExtra("first", first);
-//                    it.putExtra("second", second);
-//                    startActivity(it);
-//                }
-////                else {
-////                    Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-////                }
-//            }
-//        });
-////        letsGo.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                Intent it = new Intent(Task3_question.this, Task3_question.class);
-////                startActivity(it);
-////            }
-////        });
-//    }
 
     private String check_answers(){
         int count = 0;
@@ -240,8 +186,38 @@ public class Task3_question extends AppCompatActivity {
                 return "Try Again";
             }
         }
-
-
     }
+
+    // TODO: legacy code, delete later
+    //    private void clickOnButton(){
+////        back  = (Button) findViewById(R.id.b3_1);
+////        letsGo = (Button) findViewById(R.id.b3_2);
+//        submit = (Button) findViewById(R.id.submit);
+//
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // check user selection
+//                String msg = check_answers();
+//
+//                if (msg == "correct") {
+//                    Intent it = new Intent(Task3_question.this, Task3_success.class);
+//                    it.putExtra("first", first);
+//                    it.putExtra("second", second);
+//                    startActivity(it);
+//                }
+////                else {
+////                    Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+////                }
+//            }
+//        });
+////        letsGo.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                Intent it = new Intent(Task3_question.this, Task3_question.class);
+////                startActivity(it);
+////            }
+////        });
+//    }
 }
 
