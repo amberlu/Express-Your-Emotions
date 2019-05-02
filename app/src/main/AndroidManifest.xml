@@ -19,7 +19,8 @@
         <activity android:name=".Homepage" />
         <activity android:name=".Task1" />
         <activity android:name=".Task2" />
-        <activity android:name=".Task3" />
+        <activity android:name=".Task3_question" />
+        <activity android:name=".Task3_success" />
         <activity android:name=".Task1_1" />
         <activity android:name=".Angry" />
         <activity android:name=".Happy" />

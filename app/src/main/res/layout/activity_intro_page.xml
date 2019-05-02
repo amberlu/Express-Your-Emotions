@@ -97,8 +97,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:background="#FBC18D"
-                        android:textStyle="bold"
-                        android:textColor="#420ED6" />
+                        android:textColor="#420ED6"
+                        android:fontFamily="@font/schoolbell"
+                        android:text="Back"
+                        android:textSize="25dp"/>
 
                     <Button
                         android:id="@+id/letsgo"
@@ -106,7 +108,10 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:background="#FBC18D"
-                        android:textColor="#420ED6"/>
+                        android:textColor="#420ED6"
+                        android:fontFamily="@font/schoolbell"
+                        android:text="Let's Go"
+                        android:textSize="25dp"/>
 
                 </RelativeLayout>
             </LinearLayout>

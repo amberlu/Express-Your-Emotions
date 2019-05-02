@@ -30,7 +30,7 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(Homepage.this, IntroPage.class);
                 it.putExtra("content", "Look at the pictures, and learn what they mean!");
-                it.putExtra("task", "task1");
+                it.putExtra("task", "Learn Your Emotions");
                 it.putExtra("pic_id", R.drawable.task1_intro);
                 startActivity(it);
             }
@@ -40,7 +40,7 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(Homepage.this, IntroPage.class);
                 it.putExtra("content", "Make your face look like the picture of the character!");
-                it.putExtra("task", "task2");
+                it.putExtra("task", "Face Matching Game");
                 it.putExtra("pic_id", R.drawable.task2_intro);
                 startActivity(it);
             }
@@ -50,7 +50,7 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(Homepage.this, IntroPage.class);
                 it.putExtra("content", "Lets see how well you know your emotions!");
-                it.putExtra("task", "task3");
+                it.putExtra("task", "Emotion Quiz");
                 it.putExtra("pic_id", R.drawable.task3_intro);
                 startActivity(it);
             }

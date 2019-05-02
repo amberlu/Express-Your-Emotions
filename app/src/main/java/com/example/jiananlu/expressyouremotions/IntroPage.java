@@ -1,15 +1,12 @@
 package com.example.jiananlu.expressyouremotions;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class IntroPage extends AppCompatActivity {
 
@@ -30,39 +27,35 @@ public class IntroPage extends AppCompatActivity {
         cont = intent.getStringExtra("content");
         pic_id = intent.getIntExtra("pic_id", 0);
         task = intent.getStringExtra("task");
+
+        TextView title = findViewById(R.id.textView);
+        title.setText(task);
+
         ImageView image = findViewById(R.id.imageView);
-        TextView text = findViewById(R.id.text0);
         image.setImageResource(pic_id);
 
+        TextView text = findViewById(R.id.text0);
         text.setText(cont);
         clickOnButton();
     }
 
     private void clickOnButton(){
         letsgo = (Button) findViewById(R.id.letsgo);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "Schoolbell.ttf");
-        letsgo.setText("Let's go");
-        letsgo.setTypeface(typeface);
-        letsgo.setTextSize(20);
-
         back = (Button) findViewById(R.id.back);
-        back.setText("Back");
-        back.setTypeface(typeface);
-        back.setTextSize(20);
 
         letsgo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(task.equals("task1")){
+                if(task.equals("Learn Your Emotions")){
                     Intent it = new Intent(IntroPage.this, Task1_1.class);
                     startActivity(it);
                 }
-                else if(task.equals("task2")){
+                else if(task.equals("Face Matching Game")){
                     Intent it = new Intent(IntroPage.this, Task1_1.class);
                     startActivity(it);
                 }
-                else{
-                    Intent it = new Intent(IntroPage.this, Task1_1.class);
+                else if (task.equals("Emotion Quiz")){
+                    Intent it = new Intent(IntroPage.this, Task3_question.class);
                     startActivity(it);
                 }
             }
