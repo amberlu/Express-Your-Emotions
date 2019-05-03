@@ -10,14 +10,12 @@
         android:id="@+id/process"
         android:layout_width="306dp"
         android:layout_height="55dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="37dp"
         android:text="Process Picture"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch_image" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/emo_filler"
@@ -25,8 +23,10 @@
         android:layout_height="429dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="107dp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/process"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/switch_image"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -35,12 +35,10 @@
         android:id="@+id/switch_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="109dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="119dp"
+        android:layout_marginBottom="26dp"
         android:text="Switch Image"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/process"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emo_filler" />
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>
