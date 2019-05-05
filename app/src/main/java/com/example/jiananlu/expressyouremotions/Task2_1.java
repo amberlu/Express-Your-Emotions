@@ -83,8 +83,9 @@ public class Task2_1 extends AppCompatActivity {
     private final int PICK_IMAGE = 1;
 
     private String cur_emotion;
-    private Button back, takePic;
+    private Button back, takePic, next_button;
     private ImageView textureView;
+    boolean cleared = false;
 
     public Uri imageUri;
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -110,6 +111,9 @@ public class Task2_1 extends AppCompatActivity {
         emotion_text_display.setText("Make a " +cont+ " face!");
 
         textureView = findViewById(R.id.textureView);
+
+        next_button = findViewById(R.id.next_button123);
+
         clickOnButton();
     }
 
@@ -127,18 +131,23 @@ public class Task2_1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 takePicture();
+            }
+        });
 
-//                Intent intent = new Intent(Task2_1.this, Task2_2.class);
-//                intent.putExtra("content",cont);
-//                intent.putExtra("pic_ID",pic_id);
-//                intent.putExtra("img_bytes",global_bitmap);
-//                startActivity(intent);
-//                Intent intent = new Intent(Task2_1.this, Task2_2.class);
-////        intent.putExtra("emotion_passed",cur_emotion);
-//                intent.putExtra("correct_face",correct_face);
-//                intent.putExtra("pic_ID",pic_id);
-//                intent.putExtra("img_bytes",image_taken);
-//                startActivity(intent);
+        next_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cleared) {
+                    Intent intent = new Intent(Task2_1.this, Task2_2.class);
+                    intent.putExtra("content",cont);
+                    intent.putExtra("pic_id",pic_id);
+//                    intent.putExtra("img_bitmap",global_bitmap);
+                    intent.putExtra("img_path",mCurrentPhotoPath);
+                    startActivity(intent);
+
+                } else {
+                    Toast.makeText(Task2_1.this, "Please take a picture!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -163,7 +172,6 @@ public class Task2_1 extends AppCompatActivity {
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
             }
         }
-
     }
 
     @Override
@@ -173,6 +181,9 @@ public class Task2_1 extends AppCompatActivity {
         Bitmap imageBitmap = BitmapFactory.decodeFile(
                 mCurrentPhotoPath);
         global_bitmap = imageBitmap;
+
+
+        cleared = true;
         textureView.setImageBitmap(imageBitmap);
     }
 

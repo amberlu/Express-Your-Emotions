@@ -57,10 +57,8 @@
         android:id="@+id/picture_taken"
         android:layout_width="145dp"
         android:layout_height="164dp"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="33dp"
-        app:layout_constraintStart_toEndOf="@+id/emotion_match"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:layout_editor_absoluteX="237dp"
+        tools:layout_editor_absoluteY="121dp"
         tools:srcCompat="@tools:sample/avatars[4]" />
 
     <ImageView

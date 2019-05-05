@@ -29,7 +29,7 @@
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
         android:layout_width="152dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="108dp"
         android:layout_marginBottom="16dp"
         android:background="@color/beige"
         android:fontFamily="@font/schoolbell"
@@ -99,5 +99,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@tools:sample/avatars[12]" />
+
+    <Button
+        android:id="@+id/next_button123"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="17dp"
+        android:background="@color/beige"
+        android:fontFamily="@font/schoolbell"
+        android:text="Next"
+        android:textColor="@color/purpleText"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

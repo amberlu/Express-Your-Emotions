@@ -41,6 +41,7 @@ public class Task2_2 extends AppCompatActivity {
     int pic_id;
     Bitmap image_taken;
     String emotion_should_be;
+    String img_path;
 
     private ProgressDialog detectionProgressDialog;
     private final String apiKey = "2d1dbe92587345da9bf698b0d221beb0";
@@ -58,17 +59,23 @@ public class Task2_2 extends AppCompatActivity {
         catch (NullPointerException e){}
         setContentView(R.layout.activity_task2_2);
 
+        detectionProgressDialog = new ProgressDialog(this);
         Intent intent = getIntent();
 
         emotion_should_be = intent.getStringExtra("content");
-        pic_id = intent.getIntExtra("pic_ID",0);
+        pic_id = intent.getIntExtra("pic_id",0);
         image_taken = (Bitmap) intent.getParcelableExtra("img_bitmap");
+        img_path = intent.getStringExtra("img_path");
 
         picture_taken = findViewById(R.id.picture_taken);
-        picture_taken.setImageBitmap(image_taken);
 
-        emotion_goal = findViewById(R.id.imageView3);
+        Bitmap temp_bitmap = BitmapFactory.decodeFile(img_path);
+        picture_taken.setImageBitmap(temp_bitmap);
+
+        emotion_goal = findViewById(R.id.emotion_match);
         emotion_goal.setImageResource(pic_id);
+
+        detectAndFrame(temp_bitmap);
 
 //        visual_support = findViewById(R.id.visual_support);
 //        if (correct_face) {
