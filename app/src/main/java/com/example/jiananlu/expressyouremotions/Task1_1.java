@@ -51,7 +51,7 @@ public class Task1_1 extends AppCompatActivity {
                 Intent it = new Intent(Task1_1.this, Task1_emotion.class);
                 it.putExtra("content", emotions.get("angry"));
                 System.out.println("angry:"+emotions.get("angry"));
-                it.putExtra("pic_id", R.drawable.task1_angry);
+                it.putExtra("pic_id", R.drawable.angry);
                 System.out.println("this id:"+R.drawable.angry);
                 startActivity(it);
             }
