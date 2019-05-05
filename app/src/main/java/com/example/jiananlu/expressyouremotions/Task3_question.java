@@ -30,7 +30,7 @@ import java.util.Random;
 
 public class Task3_question extends AppCompatActivity {
     private GridLayout mainGrid;
-    private Button submit;
+    private Button submit, home;
     private Random index;
     List<Integer> images;
     List<Boolean> correct_answers;
@@ -89,7 +89,6 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.sad_7,
             R.drawable.sad_8,
             R.drawable.sad_9,
-            R.drawable.sad_10,
             R.drawable.sad_11,
             R.drawable.sad_12,
             R.drawable.sad_13,
@@ -243,6 +242,16 @@ public class Task3_question extends AppCompatActivity {
                     //Toast.makeText(getApplicationContext(), msg,Toast.LENGTH_SHORT).show();
                 }
             }
+        });
+
+        home = (Button) findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Task3_question.this, Homepage.class);
+                startActivity(it);
+            }
+
         });
     }
 
