@@ -30,6 +30,7 @@ public class Task1_emotion extends AppCompatActivity {
         photo = findViewById(R.id.imageView);
         photo.setImageResource(pic_id);
 
+
         text = findViewById(R.id.text0);
         text.setText(cont);
         clickOnButton();
