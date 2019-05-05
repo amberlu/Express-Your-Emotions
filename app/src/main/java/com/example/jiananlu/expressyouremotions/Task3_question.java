@@ -3,11 +3,14 @@ package com.example.jiananlu.expressyouremotions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.text.SpannableStringBuilder;
+import android.text.style.RelativeSizeSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -76,7 +79,6 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.angry_14,
             R.drawable.angry_15
     };
-
     private Integer[] sad_faces = {
             R.drawable.sad_1,
             R.drawable.sad_2,
@@ -94,7 +96,6 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.sad_14,
             R.drawable.sad_15
     };
-
     private Integer[] bored_faces = {
             R.drawable.bored_1,
             R.drawable.bored_2,
@@ -104,7 +105,6 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.bored_6,
             R.drawable.bored_7
     };
-
     private Integer[] surprised_faces = {
             R.drawable.surprised_1,
             R.drawable.surprised_2,
@@ -115,10 +115,8 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.surprised_7,
             R.drawable.surprised_8,
             R.drawable.surprised_9,
-            R.drawable.surprised_10,
             R.drawable.surprised_11
     };
-
     private Integer[] scared_faces = {
             R.drawable.scared_1,
             R.drawable.scared_2,
@@ -161,10 +159,6 @@ public class Task3_question extends AppCompatActivity {
 
         images = new ArrayList<>(); // images is a list of three selected drawable
 
-        // TODO: remove static selection after having more emotional images
-//        correct_emotion = "happy";
-//        Integer[] correct = happy_faces;
-//        Integer[] wrong = angry_faces;
         correct_emotion = correct_str;
         Integer[] correct = drawableMap.get(correct_emotion);
         Integer[] wrong = drawableMap.get(wrong_str);
@@ -238,7 +232,14 @@ public class Task3_question extends AppCompatActivity {
                 }
                 // else, stay in the current page and display helpful messages
                 else {
-                    Toast.makeText(getApplicationContext(), msg,Toast.LENGTH_SHORT).show();
+                    // make the toast message with bigger font size and pink background
+                    SpannableStringBuilder biggerText = new SpannableStringBuilder(msg);
+                    biggerText.setSpan(new RelativeSizeSpan(2.0f), 0, msg.length(), 0);
+                    Toast toast = Toast.makeText(getApplicationContext(), biggerText, Toast.LENGTH_SHORT);
+                    View toast_view = toast.getView();
+                    toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    toast.show();
+                    //Toast.makeText(getApplicationContext(), msg,Toast.LENGTH_SHORT).show();
                 }
             }
         });
