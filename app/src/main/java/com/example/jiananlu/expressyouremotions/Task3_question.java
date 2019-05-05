@@ -209,6 +209,7 @@ public class Task3_question extends AppCompatActivity {
 
         TextView hint = findViewById(R.id.hint);
         hint.setText("Pick all of the " + correct_emotion + " faces. Hint: There are " + num_correct_answers +"!");
+        //hint.setBackgroundColor(Color.parseColor("#FFCAEA"));
 
         // detect image selection
         mainGrid = findViewById(R.id.mainGrid);
