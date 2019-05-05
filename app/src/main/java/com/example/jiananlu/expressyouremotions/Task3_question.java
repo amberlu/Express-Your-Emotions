@@ -41,11 +41,36 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.happy_1,
             R.drawable.happy_2,
             R.drawable.happy_3,
+            R.drawable.happy_4,
+            R.drawable.happy_5,
+            R.drawable.happy_6,
+            R.drawable.happy_7,
+            R.drawable.happy_8,
+            R.drawable.happy_9,
+            R.drawable.happy_10,
+            R.drawable.happy_11,
+            R.drawable.happy_12,
+            R.drawable.happy_13,
+            R.drawable.happy_14,
+            R.drawable.happy_15,
+            R.drawable.happy_16,
     };
     private Integer[] angry_faces = {
             R.drawable.angry_1
     };
 
+    private Integer[] sad_faces = {
+            R.drawable.sad_1
+    };
+
+    private Integer[] bored_faces = {
+    };
+
+    private Integer[] surprised_faces = {
+    };
+
+    private Integer[] scared_faces = {
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
