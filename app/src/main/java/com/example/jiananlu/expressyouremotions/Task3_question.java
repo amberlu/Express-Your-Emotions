@@ -193,7 +193,7 @@ public class Task3_question extends AppCompatActivity {
         }
 
         if (count != num_correct_answers) {
-            return "Select " + num_correct_answers + " faces!";
+            return "Select " + num_correct_answers + " Faces!";
         }
         else {
             if (checked.equals(correct_answers)){
