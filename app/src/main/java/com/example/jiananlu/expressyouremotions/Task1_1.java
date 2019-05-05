@@ -52,7 +52,7 @@ public class Task1_1 extends AppCompatActivity {
                 it.putExtra("content", emotions.get("angry"));
                 System.out.println("angry:"+emotions.get("angry"));
                 it.putExtra("pic_id", R.drawable.task1_angry);
-                System.out.println("this id:"+R.drawable.task1_angry);
+                System.out.println("this id:"+R.drawable.angry);
                 startActivity(it);
             }
         });
