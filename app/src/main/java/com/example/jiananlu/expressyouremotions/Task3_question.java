@@ -29,7 +29,6 @@ public class Task3_question extends AppCompatActivity {
     private GridLayout mainGrid;
     private Button submit;
     private Random index;
-    private List<Integer[]> emotions;
     List<Integer> images;
     List<Boolean> correct_answers;
     private String correct_emotion;
@@ -37,6 +36,7 @@ public class Task3_question extends AppCompatActivity {
     private ImageView upperleft, upperright, lowerleft, lowerright;
     private Integer first, second, third, fourth;
     Map<String, Integer[]> drawableMap = new HashMap< String, Integer[]>();
+    // image source: https://www.pinclipart.com/
     private Integer[] happy_faces = {
             R.drawable.happy_1,
             R.drawable.happy_2,
@@ -54,22 +54,81 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.happy_14,
             R.drawable.happy_15,
             R.drawable.happy_16,
+            R.drawable.happy_17,
+            R.drawable.happy_18,
+            R.drawable.happy_19,
+            R.drawable.happy_20
     };
     private Integer[] angry_faces = {
-            R.drawable.angry_1
+            R.drawable.angry_1,
+            R.drawable.angry_2,
+            R.drawable.angry_3,
+            R.drawable.angry_4,
+            R.drawable.angry_5,
+            R.drawable.angry_6,
+            R.drawable.angry_7,
+            R.drawable.angry_8,
+            R.drawable.angry_9,
+            R.drawable.angry_10,
+            R.drawable.angry_11,
+            R.drawable.angry_12,
+            R.drawable.angry_13,
+            R.drawable.angry_14,
+            R.drawable.angry_15
     };
 
     private Integer[] sad_faces = {
-            R.drawable.sad_1
+            R.drawable.sad_1,
+            R.drawable.sad_2,
+            R.drawable.sad_3,
+            R.drawable.sad_4,
+            R.drawable.sad_5,
+            R.drawable.sad_6,
+            R.drawable.sad_7,
+            R.drawable.sad_8,
+            R.drawable.sad_9,
+            R.drawable.sad_10,
+            R.drawable.sad_11,
+            R.drawable.sad_12,
+            R.drawable.sad_13,
+            R.drawable.sad_14,
+            R.drawable.sad_15
     };
 
     private Integer[] bored_faces = {
+            R.drawable.bored_1,
+            R.drawable.bored_2,
+            R.drawable.bored_3,
+            R.drawable.bored_4,
+            R.drawable.bored_5,
+            R.drawable.bored_6,
+            R.drawable.bored_7
     };
 
     private Integer[] surprised_faces = {
+            R.drawable.surprised_1,
+            R.drawable.surprised_2,
+            R.drawable.surprised_3,
+            R.drawable.surprised_4,
+            R.drawable.surprised_5,
+            R.drawable.surprised_6,
+            R.drawable.surprised_7,
+            R.drawable.surprised_8,
+            R.drawable.surprised_9,
+            R.drawable.surprised_10,
+            R.drawable.surprised_11
     };
 
     private Integer[] scared_faces = {
+            R.drawable.scared_1,
+            R.drawable.scared_2,
+            R.drawable.scared_3,
+            R.drawable.scared_4,
+            R.drawable.scared_5,
+            R.drawable.scared_6,
+            R.drawable.scared_7,
+            R.drawable.scared_8,
+            R.drawable.scared_9
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,22 +145,29 @@ public class Task3_question extends AppCompatActivity {
         lowerleft = findViewById(R.id.img_3);
         lowerright = findViewById(R.id.img_4);
 
-        // initialize the emotions list
+        // initialize the emotion map
         drawableMap.put("happy", happy_faces);
         drawableMap.put("angry", angry_faces);
+        drawableMap.put("sad", sad_faces);
+        drawableMap.put("bored", bored_faces);
+        drawableMap.put("surprised", surprised_faces);
+        drawableMap.put("scared", scared_faces);
 
-        emotions = new ArrayList<Integer[]>(drawableMap.values());
         // randomly pick the tested emotion from emotions
-//        String correct = randomItem(emotions);
-//        emotions.remove(correct);
-//        String wrong = randomItem(emotions);
+        List<String> emotion_str = new ArrayList<String>(drawableMap.keySet());
+        String correct_str = randomItem(emotion_str);
+        emotion_str.remove(correct_str);
+        String wrong_str = randomItem(emotion_str);
 
         images = new ArrayList<>(); // images is a list of three selected drawable
 
         // TODO: remove static selection after having more emotional images
-        correct_emotion = "happy";
-        Integer[] correct = happy_faces;
-        Integer[] wrong = angry_faces;
+//        correct_emotion = "happy";
+//        Integer[] correct = happy_faces;
+//        Integer[] wrong = angry_faces;
+        correct_emotion = correct_str;
+        Integer[] correct = drawableMap.get(correct_emotion);
+        Integer[] wrong = drawableMap.get(wrong_str);
 
         // select 3 images randomly from the correct emotional category
         index = new Random();
@@ -198,10 +264,9 @@ public class Task3_question extends AppCompatActivity {
         }
     }
 
-    private Integer[] randomItem(List<Integer[]> list) {
+    private String randomItem(List<String> list) {
         int index = (int) ((Math.random() * list.size()));
-        Integer[] item = list.get(index);
-        return item;
+        return list.get(index);
     }
 
     private String check_answers(){
