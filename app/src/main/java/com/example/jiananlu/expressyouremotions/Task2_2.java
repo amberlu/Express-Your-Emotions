@@ -9,10 +9,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableStringBuilder;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -180,7 +183,15 @@ public class Task2_2 extends AppCompatActivity {
                 imageView.setImageBitmap(
                         drawFaceRectanglesOnBitmap(img_bitmap_new, result, emotion));
                 img_bitmap_new.recycle();
-                Toast.makeText(Task2_2.this, emotion, Toast.LENGTH_SHORT).show();
+
+                // make the toast message with bigger font size and pink background
+                SpannableStringBuilder biggerText = new SpannableStringBuilder(emotion);
+                biggerText.setSpan(new RelativeSizeSpan(2.0f), 0, emotion.length(), 0);
+                Toast toast = Toast.makeText(getApplicationContext(), biggerText, Toast.LENGTH_SHORT);
+                View toast_view = toast.getView();
+                toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                toast.show();
+                //Toast.makeText(Task2_2.this, emotion, Toast.LENGTH_SHORT).show();
             }
         };
         detectTask.execute(inputStream);

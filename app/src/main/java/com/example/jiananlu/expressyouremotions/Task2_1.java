@@ -14,6 +14,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ImageFormat;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
@@ -37,6 +38,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableStringBuilder;
+import android.text.style.RelativeSizeSpan;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.Surface;
@@ -146,7 +149,15 @@ public class Task2_1 extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(Task2_1.this, "Please take a picture!", Toast.LENGTH_SHORT).show();
+                    // make the toast message with bigger font size and pink background
+                    String msg = "Please take a picture!";
+                    SpannableStringBuilder biggerText = new SpannableStringBuilder(msg);
+                    biggerText.setSpan(new RelativeSizeSpan(2.0f), 0, msg.length(), 0);
+                    Toast toast = Toast.makeText(getApplicationContext(), biggerText, Toast.LENGTH_SHORT);
+                    View toast_view = toast.getView();
+                    toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    toast.show();
+                    //Toast.makeText(Task2_1.this, "Please take a picture!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
