@@ -2,12 +2,17 @@ package com.example.jiananlu.expressyouremotions;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,29 +26,25 @@ import java.util.Map;
 import java.util.Random;
 
 public class Task3_question extends AppCompatActivity {
-
+    private GridLayout mainGrid;
     private Button submit;
-    private List<Integer[]> emotions;
-    private ImageView upperleft;
-    private ImageView upperright;
-    private ImageView lower;
-    private Integer[] happy_faces = {
-            R.drawable.happy_1,
-            R.drawable.happy_2
-    };
-
-    private Integer[] angry_faces = {
-            R.drawable.angry_1
-    };
-
     private Random index;
+    private List<Integer[]> emotions;
     List<Integer> images;
     List<Boolean> correct_answers;
     private String correct_emotion;
-    private Integer first;
-    private Integer second;
-    private Integer third;
+    private final Integer num_correct_answers = 3;
+    private ImageView upperleft, upperright, lowerleft, lowerright;
+    private Integer first, second, third, fourth;
     Map<String, Integer[]> drawableMap = new HashMap< String, Integer[]>();
+    private Integer[] happy_faces = {
+            R.drawable.happy_1,
+            R.drawable.happy_2,
+            R.drawable.happy_3,
+    };
+    private Integer[] angry_faces = {
+            R.drawable.angry_1
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +56,10 @@ public class Task3_question extends AppCompatActivity {
         catch (NullPointerException e){}
         setContentView(R.layout.activity_task3_question);
 
-        upperleft = findViewById(R.id.upper_left_img);
-        upperright = findViewById(R.id.upper_right_img);
-        lower = findViewById(R.id.lower_mid_img);
+        upperleft = findViewById(R.id.img_1);
+        upperright = findViewById(R.id.img_2);
+        lowerleft = findViewById(R.id.img_3);
+        lowerright = findViewById(R.id.img_4);
 
         // initialize the emotions list
         drawableMap.put("happy", happy_faces);
@@ -76,31 +78,37 @@ public class Task3_question extends AppCompatActivity {
         Integer[] correct = happy_faces;
         Integer[] wrong = angry_faces;
 
-        // select 2 images randomly from the correct emotional category
+        // select 3 images randomly from the correct emotional category
         index = new Random();
         first = correct[index.nextInt(correct.length)];
         images.add(first);
 
         second = correct[index.nextInt(correct.length)];
-        while (second == first) {
+        while (images.contains(second)) {
             second = correct[index.nextInt(correct.length)];
         }
         images.add(second);
 
-        // select 1 images randomly from the wrong emotional category
-        index = new Random();
-        third = wrong[index.nextInt(wrong.length)];
+        third = correct[index.nextInt(correct.length)];
+        while (images.contains(third)) {
+            third = correct[index.nextInt(correct.length)];
+        }
         images.add(third);
 
+        // select 1 images randomly from the wrong emotional category
+        index = new Random();
+        fourth = wrong[index.nextInt(wrong.length)];
+        images.add(fourth);
+
         // correct_answers is list of three boolean variables indicating
-        // whether upperleft, upperight and lower image is a correct answer or not
+        // whether the upper left, upper right, lower left, lower right image is a correct answer or not
         correct_answers = new ArrayList<>();
 
         // shuffle images list
         Collections.shuffle(images);
         for (int image: images) {
             // fill in correct_answer
-            if (image == first || image == second) {
+            if (image == first || image == second || image == third) {
                 correct_answers.add(true);
             }
             else {
@@ -111,16 +119,21 @@ public class Task3_question extends AppCompatActivity {
         // render the corresponding text and images in the layout
         upperleft.setImageResource(images.get(0));
         upperright.setImageResource(images.get(1));
-        lower.setImageResource(images.get(2));
+        lowerleft.setImageResource(images.get(2));
+        lowerright.setImageResource(images.get(3));
 
         TextView hint = findViewById(R.id.hint);
-        hint.setText("Pick all of the " + correct_emotion + " faces. Hint: There are 2!");
+        hint.setText("Pick all of the " + correct_emotion + " faces. Hint: There are " + num_correct_answers +"!");
+
+        // detect image selection
+        mainGrid = findViewById(R.id.mainGrid);
+        gridEvent(mainGrid);
 
         submit = (Button) findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                // check user answers
                 String msg = check_answers();
 
                 // if correct, proceed to the success page
@@ -128,6 +141,7 @@ public class Task3_question extends AppCompatActivity {
                     Intent it = new Intent(Task3_question.this, Task3_success.class);
                     it.putExtra("first", first);
                     it.putExtra("second", second);
+                    it.putExtra("third", third);
                     it.putExtra("emotion", correct_emotion);
                     startActivity(it);
                 }
@@ -139,6 +153,26 @@ public class Task3_question extends AppCompatActivity {
         });
     }
 
+    private void gridEvent(GridLayout mainGrid) {
+        // iterate through all images contained in the mainGrid
+        for (int i = 0; i < mainGrid.getChildCount(); i++) {
+            final CardView child = (CardView) mainGrid.getChildAt(i);
+            child.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (child.getCardBackgroundColor().getDefaultColor() == -1) {
+                        child.setCardBackgroundColor(Color.parseColor("#FFCAEA"));
+                    }
+                    else {
+                        child.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+                    }
+                    //Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+    }
+
     private Integer[] randomItem(List<Integer[]> list) {
         int index = (int) ((Math.random() * list.size()));
         Integer[] item = list.get(index);
@@ -148,35 +182,18 @@ public class Task3_question extends AppCompatActivity {
     private String check_answers(){
         int count = 0;
         List<Boolean> checked = new ArrayList<>();
-
-        CheckBox upperleft_check = findViewById(R.id.upper_left_check);
-        CheckBox upperright_check = findViewById(R.id.upper_right_check);
-        CheckBox lower_check = findViewById(R.id.lower_mid_check);
-
-        if (upperleft_check.isChecked()) {
-            count += 1;
-            checked.add(true);
-        } else {
-            checked.add(false);
+        for (int i = 0; i < mainGrid.getChildCount(); i++) {
+            final CardView child = (CardView) mainGrid.getChildAt(i);
+            if (child.getCardBackgroundColor().getDefaultColor() != -1) {
+                count += 1;
+                checked.add(true);
+            } else {
+                checked.add(false);
+            }
         }
 
-        if (upperright_check.isChecked()) {
-            count += 1;
-            checked.add(true);
-        } else {
-            checked.add(false);
-        }
-
-        if (lower_check.isChecked()) {
-            count += 1;
-            checked.add(true);
-        } else {
-            checked.add(false);
-        }
-
-        if (count != 2) {
-
-            return "Select 2 faces!";
+        if (count != num_correct_answers) {
+            return "Select " + num_correct_answers + " faces!";
         }
         else {
             if (checked.equals(correct_answers)){
@@ -187,37 +204,5 @@ public class Task3_question extends AppCompatActivity {
             }
         }
     }
-
-    // TODO: legacy code, delete later
-    //    private void clickOnButton(){
-////        back  = (Button) findViewById(R.id.b3_1);
-////        letsGo = (Button) findViewById(R.id.b3_2);
-//        submit = (Button) findViewById(R.id.submit);
-//
-//        submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // check user selection
-//                String msg = check_answers();
-//
-//                if (msg == "correct") {
-//                    Intent it = new Intent(Task3_question.this, Task3_success.class);
-//                    it.putExtra("first", first);
-//                    it.putExtra("second", second);
-//                    startActivity(it);
-//                }
-////                else {
-////                    Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-////                }
-//            }
-//        });
-////        letsGo.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                Intent it = new Intent(Task3_question.this, Task3_question.class);
-////                startActivity(it);
-////            }
-////        });
-//    }
 }
 

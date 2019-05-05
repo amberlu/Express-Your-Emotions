@@ -20,8 +20,8 @@ import java.util.ArrayList;
 public class Task3_success extends AppCompatActivity {
 
     private Button home, next;
-    private Integer first, second;
-    private ImageView first_img, second_img;
+    private Integer first, second, third;
+    private ImageView first_img, second_img, third_img;
     private TextView def_text;
     private String emotion;
     private String def_json_path = "emotions_def.json";
