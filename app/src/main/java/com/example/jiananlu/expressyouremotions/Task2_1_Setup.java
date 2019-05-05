@@ -50,8 +50,8 @@ public class Task2_1_Setup extends AppCompatActivity{
                 Intent it = new Intent(Task2_1_Setup.this, Task2_1.class);
                 it.putExtra("content", emotions.get("angry"));
                 System.out.println("angry:"+emotions.get("angry"));
-                it.putExtra("pic_id", R.drawable.task1_angry);
-                System.out.println("this id:"+R.drawable.task1_angry);
+                it.putExtra("pic_id", R.drawable.angry);
+                System.out.println("this id:"+R.drawable.angry);
                 startActivity(it);
             }
         });
