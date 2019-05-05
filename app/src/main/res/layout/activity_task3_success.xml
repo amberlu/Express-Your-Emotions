@@ -1,181 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".Task3_success">
-
-
-<LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Task3_success"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="10"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.9"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="#FFCAEA"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/schoolbell"
             android:gravity="center"
             android:text="Emotion Quiz"
             android:textAlignment="center"
             android:textColor="#420ED6"
             android:textSize="36sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#F02E8B" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:background="#B0AAE8F1"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/hint"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/schoolbell"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/img_1"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/img_2"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/img_3"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="12dp"
-            android:layout_weight="0.8"
+            android:layout_height="5dp"
             android:background="#F02E8B" />
 
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/ll1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.13"
-        android:background="#B0AAE8F1"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    >
-
-
-
-                    <TextView
-                        android:id="@+id/msg_def"
-                        android:layout_width="189dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/schoolbell"
-                        android:textColor="#696969"
-                        android:textSize="25sp"
-                        android:visibility="visible"
-                        android:scaleType="centerInside"
-                        android:gravity="center"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/first"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/second"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                             />
-
-]
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/youdidit"
-                    android:scaleType="centerInside"
-                    android:gravity="center"/>
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="6">
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:src="@drawable/youdidit"
+                android:layout_weight="1"/>
 
-                <Button
-                    android:id="@+id/home"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:background="#FBC18D"
-                    android:textColor="#420ED6"
-                    android:fontFamily="@font/schoolbell"
-                    android:text="Home"
-                    android:textSize="25dp"/>
-
-                <Button
-                    android:id="@+id/next"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="#FBC18D"
-                    android:textColor="#420ED6"
-                    android:fontFamily="@font/schoolbell"
-                    android:text="Next Face"
-                    android:textSize="25dp"/>
-
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/msg_def"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/schoolbell"
+                android:textColor="#696969"
+                android:textSize="25sp"
+                android:visibility="visible"
+                android:scaleType="centerInside"
+                android:gravity="center"/>
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5">
+
+            <Button
+                android:id="@+id/home"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="#FBC18D"
+                android:textColor="#420ED6"
+                android:fontFamily="@font/schoolbell"
+                android:text="Home"
+                android:textSize="25dp"
+                android:layout_marginLeft="10dp"/>
+
+            <Button
+                android:id="@+id/next"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="#FBC18D"
+                android:textColor="#420ED6"
+                android:fontFamily="@font/schoolbell"
+                android:text="Next Face"
+                android:textSize="25dp"
+                android:layout_marginRight="10dp"/>
+
+        </RelativeLayout>
     </LinearLayout>
 
 
 </LinearLayout>
-</android.support.constraint.ConstraintLayout>

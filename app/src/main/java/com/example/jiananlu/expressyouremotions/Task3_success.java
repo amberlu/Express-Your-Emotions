@@ -20,9 +20,9 @@ import java.util.ArrayList;
 public class Task3_success extends AppCompatActivity {
 
     private Button home, next;
-    private Integer first, second;
-    private ImageView first_img, second_img;
-    private TextView def_text;
+    private Integer first, second, third;
+    private ImageView first_img, second_img, third_img;
+    private TextView def_text, hint;
     private String emotion;
     private String def_json_path = "emotions_def.json";
 
@@ -39,27 +39,37 @@ public class Task3_success extends AppCompatActivity {
         Intent intent = getIntent();
         first = intent.getIntExtra("first", 0);
         second = intent.getIntExtra("second", 0);
+        third = intent.getIntExtra("third", 0);
         emotion = intent.getStringExtra("emotion");
 
         String def = readFromJSON(def_json_path);
 
         if (first != 0) {
-            first_img = findViewById(R.id.first);
+            first_img = findViewById(R.id.img_1);
             first_img.setImageResource(first);
         }
 
         if (second != 0) {
-            second_img = findViewById(R.id.second);
+            second_img = findViewById(R.id.img_2);
             second_img.setImageResource(second);
+        }
+
+        if (third != 0) {
+            third_img = findViewById(R.id.img_3);
+            third_img.setImageResource(third);
         }
 
         if (def != null) {
             def_text = findViewById(R.id.msg_def);
             def_text.setText(def);
 
+            hint = findViewById(R.id.hint);
+            hint.setText("The " + emotion + " faces are:");
         }
+
         clickOnButton();
     }
+
 
     private void clickOnButton(){
         home  = (Button) findViewById(R.id.home);

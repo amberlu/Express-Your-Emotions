@@ -18,7 +18,11 @@
         android:theme="@style/AppTheme">
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".Homepage" />
@@ -36,13 +40,7 @@
         <activity android:name=".Bored" />
         <activity android:name=".Surprised" />
         <activity android:name=".Scared" />
-        <activity android:name=".EmotionRecogTestClass">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".EmotionRecogTestClass"/>
 
         <meta-data
             android:name="preloaded_fonts"
