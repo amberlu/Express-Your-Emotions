@@ -188,6 +188,7 @@ public class Task2_2 extends AppCompatActivity {
                     Toast.makeText(Task2_2.this, emotion, Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
+                    visual_support.setImageResource(R.drawable.try_again_text);
                     Toast.makeText(Task2_2.this, "Not Quite! Click next face and retry!", Toast.LENGTH_SHORT).show();
                 }
             }
