@@ -71,7 +71,6 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.angry_6,
             R.drawable.angry_7,
             R.drawable.angry_8,
-            R.drawable.angry_9,
             R.drawable.angry_10,
             R.drawable.angry_11,
             R.drawable.angry_12,
@@ -102,13 +101,11 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.bored_4,
             R.drawable.bored_5,
             R.drawable.bored_6,
-            R.drawable.bored_7
     };
     private Integer[] surprised_faces = {
             R.drawable.surprised_1,
             R.drawable.surprised_2,
             R.drawable.surprised_3,
-            R.drawable.surprised_4,
             R.drawable.surprised_5,
             R.drawable.surprised_6,
             R.drawable.surprised_7,
@@ -117,7 +114,6 @@ public class Task3_question extends AppCompatActivity {
             R.drawable.surprised_11
     };
     private Integer[] scared_faces = {
-            R.drawable.scared_1,
             R.drawable.scared_2,
             R.drawable.scared_3,
             R.drawable.scared_4,
