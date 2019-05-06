@@ -107,6 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
                 android:fontFamily="@font/schoolbell"
                 android:textColor="#696969"
                 android:textSize="28sp"
