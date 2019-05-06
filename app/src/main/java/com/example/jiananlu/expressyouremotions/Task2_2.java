@@ -9,10 +9,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableStringBuilder;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -37,14 +40,14 @@ public class Task2_2 extends AppCompatActivity {
     ImageView emotion_goal,picture_taken,visual_support;
     Button back, try_again;
 
-    boolean correct_face;
+    boolean correct_face = false;
     int pic_id;
     Bitmap image_taken;
     String emotion_should_be;
     String img_path;
 
     private ProgressDialog detectionProgressDialog;
-    private final String apiKey = "2d1dbe92587345da9bf698b0d221beb0";
+    private final String apiKey = "af26f2c69b9746448828141ef152aeba";
     private final String apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0/";
     private final FaceServiceClient faceServiceClient = new FaceServiceRestClient(apiEndpoint,apiKey);
 
@@ -57,60 +60,49 @@ public class Task2_2 extends AppCompatActivity {
             this.getSupportActionBar().hide();
         }
         catch (NullPointerException e){}
-        setContentView(R.layout.activity_task2_2);
+        setContentView(R.layout.temp2_2);
 
         detectionProgressDialog = new ProgressDialog(this);
-        Intent intent = getIntent();
 
+        Intent intent = getIntent();
         emotion_should_be = intent.getStringExtra("content");
         pic_id = intent.getIntExtra("pic_id",0);
         image_taken = (Bitmap) intent.getParcelableExtra("img_bitmap");
         img_path = intent.getStringExtra("img_path");
 
         picture_taken = findViewById(R.id.picture_taken);
-
         Bitmap temp_bitmap = BitmapFactory.decodeFile(img_path);
         picture_taken.setImageBitmap(temp_bitmap);
 
         emotion_goal = findViewById(R.id.emotion_match);
         emotion_goal.setImageResource(pic_id);
-
         detectAndFrame(temp_bitmap);
+        visual_support = findViewById(R.id.visual_support_2);
 
-//        visual_support = findViewById(R.id.visual_support);
-//        if (correct_face) {
-//            visual_support.setImageResource(R.drawable.mickey);
-//        }
-//        else {
-//            visual_support.setImageResource(R.drawable.try_again_text);
-//        }
         clickOnButton();
     }
 
     private void clickOnButton(){
-        try_again = (Button) findViewById(R.id.next_face);
-        back = (Button) findViewById(R.id.back2_1);
+        try_again = (Button) findViewById(R.id.next_face_2);
+        back = (Button) findViewById(R.id.home2_2);
 
         try_again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Task2_2.this, Task2_1.class);
-                startActivity(it);
-            }
-        });
-        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Task2_2.this, Task2_1_Setup.class);
                 startActivity(it);
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Task2_2.this, Homepage.class);
+                startActivity(it);
+            }
+        });
     }
 
     private void detectAndFrame(final Bitmap img_bitmap_new) {
-
-//        textureView = (ImageView) findViewById(R.id.textureView);
-//        textureView.setImageBitmap(imageBitmap);
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         img_bitmap_new.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
@@ -171,21 +163,37 @@ public class Task2_2 extends AppCompatActivity {
                 }
                 if (result == null) return;
 
-                String emotion = getEmotion(result);
-//                cur_emotion = emotion;
-//                if (emotion.toLowerCase() == cont.toLowerCase()) {
-//                    correct_face = true;
-//                }
-                ImageView imageView = findViewById(R.id.textureView);
-                imageView.setImageBitmap(
-                        drawFaceRectanglesOnBitmap(img_bitmap_new, result, emotion));
-                img_bitmap_new.recycle();
-                Toast.makeText(Task2_2.this, emotion, Toast.LENGTH_SHORT).show();
+
+                try {
+                    String emotion = getEmotion(result);
+
+                    if (emotion.toLowerCase().equals(emotion_should_be.toLowerCase())) {
+                        correct_face = true;
+                    }
+
+                    if (correct_face) {
+                        visual_support.setImageResource(R.drawable.mickey);
+                    }
+                    else {
+                        visual_support.setImageResource(R.drawable.try_again_text);
+                    }
+
+                    // make the toast message with bigger font size and pink background
+                    SpannableStringBuilder biggerText = new SpannableStringBuilder(emotion);
+                    biggerText.setSpan(new RelativeSizeSpan(2.0f), 0, emotion.length(), 0);
+                    Toast toast = Toast.makeText(getApplicationContext(), biggerText, Toast.LENGTH_SHORT);
+                    View toast_view = toast.getView();
+                    toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    toast.show();
+                    Toast.makeText(Task2_2.this, emotion, Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(Task2_2.this, "Not Quite! Click next face and retry!", Toast.LENGTH_SHORT).show();
+                }
             }
         };
         detectTask.execute(inputStream);
     }
-
 
     private void showError(String message) {
         new AlertDialog.Builder(this)
@@ -256,6 +264,7 @@ public class Task2_2 extends AppCompatActivity {
         } else if (expressed_emotion == cur_face_emotion.neutral) {
             return "Bored";
         }
+
         return "Could not determine emotion";
     }
 

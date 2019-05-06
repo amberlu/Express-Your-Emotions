@@ -44,7 +44,7 @@ public class EmotionRecogTestClass extends AppCompatActivity {
 
     private final int PICK_IMAGE = 1;
     private ProgressDialog detectionProgressDialog;
-    private final String apiKey = "2d1dbe92587345da9bf698b0d221beb0";
+    private final String apiKey = "af26f2c69b9746448828141ef152aeba";
     private final String apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0/";
     private final FaceServiceClient faceServiceClient = new FaceServiceRestClient(apiEndpoint,apiKey);
 
@@ -52,12 +52,11 @@ public class EmotionRecogTestClass extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emotionrecog_test);
-//        try
-//        {
-//            this.getSupportActionBar().hide();
-//        }
-//        catch (NullPointerException e){e.printStackTrace();}
-
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){e.printStackTrace();}
         switch_picture = findViewById(R.id.switch_image);
         process = findViewById(R.id.process);
         filler = findViewById(R.id.emo_filler);
