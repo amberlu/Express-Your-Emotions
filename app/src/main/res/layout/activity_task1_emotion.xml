@@ -1,98 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Task1_emotions"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Task1_Emotions">
+    android:orientation="vertical"
+    android:weightSum="10"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFCAEA"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|center_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/schoolbell"
+            android:text="Learn Your Emotions"
+            android:textAlignment="center"
+            android:textColor="#420ED6"
+            android:textSize="36sp"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#F02E8B" />
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="9"
+        android:background="#B0AAE8F1"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:weightSum="10">
 
         <LinearLayout
-            android:id="@+id/ll0"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.9"
-            android:background="#FFCAEA"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:fontFamily="@font/schoolbell"
-                android:gravity="center"
-                android:text="Express your Emotions"
-                android:textAlignment="center"
-                android:textColor="#420ED6"
-                android:textSize="36sp" />
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                android:layout_height="12dp"
-                android:layout_weight="0.8"
-                android:background="#F02E8B" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/ll1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.13"
-            android:background="#B0AAE8F1"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.3"
-                android:orientation="vertical"></LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_margin="15dp">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.6"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                android:src="@drawable/bored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/text0"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/schoolbell"
-                android:gravity="center"
-                android:text="Nihao"
-                android:textAlignment="center"
-                android:textColor="#696969"
-                android:textSize="36sp"
-                android:visibility="visible" />
+        <TextView
+            android:id="@+id/text0"
+            android:layout_weight="3.5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textSize="40sp"
+            android:layout_margin="15dp"
+            android:fontFamily="@font/schoolbell"
+            android:gravity="center"
+            android:textAlignment="center"/>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5">
 
             <Button
                 android:id="@+id/button"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="129dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginBottom="15dp"
-                android:layout_weight="1.2"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:background="#FBC18D"
                 android:fontFamily="@font/schoolbell"
                 android:text="Back"
                 android:textColor="#420ED6"
-                android:textSize="24sp" />
+                android:textSize="25dp" />
 
-        </LinearLayout>
 
+        </RelativeLayout>
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,7 +19,8 @@ import java.util.Map;
 public class Task2_1_Setup extends AppCompatActivity{
 
 
-    private Button angry, happy, sad, scared, bored, surprised, home;
+    private ImageView angry, happy, sad, scared, bored, surprised;
+    private Button home;
 
     Map<String, String> emotions = new HashMap<>();
 
@@ -35,19 +37,26 @@ public class Task2_1_Setup extends AppCompatActivity{
     }
 
     public void clickOnButton(){
-        angry  = (Button) findViewById(R.id.angry);
-        happy = (Button) findViewById(R.id.happy);
-        sad  = (Button) findViewById(R.id.sad);
-        scared = (Button) findViewById(R.id.scared);
-        bored  = (Button) findViewById(R.id.bored);
-        surprised = (Button) findViewById(R.id.surprised);
+        angry  = (ImageView) findViewById(R.id.angry);
+        happy = (ImageView) findViewById(R.id.happy);
+        sad  = (ImageView) findViewById(R.id.sad);
+        scared = (ImageView) findViewById(R.id.scared);
+        bored  = (ImageView) findViewById(R.id.bored);
+        surprised = (ImageView) findViewById(R.id.surprised);
         home = (Button) findViewById(R.id.task1_home);
         angry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Task2_1_Setup.this, Task2_1.class);
+<<<<<<< HEAD
                 it.putExtra("content","angry");
                 it.putExtra("pic_id", R.drawable.task1_angry);
+=======
+                it.putExtra("content", emotions.get("angry"));
+                System.out.println("angry:"+emotions.get("angry"));
+                it.putExtra("pic_id", R.drawable.angry);
+                System.out.println("this id:"+R.drawable.angry);
+>>>>>>> 314c6e0ebd69a5b6e48222104e9fe5678bbe3a61
                 startActivity(it);
             }
         });
