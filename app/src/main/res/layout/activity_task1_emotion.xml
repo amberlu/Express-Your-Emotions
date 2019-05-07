@@ -60,14 +60,14 @@
 
         <TextView
             android:id="@+id/text0"
-            android:layout_weight="3.5"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:textSize="40sp"
             android:layout_margin="15dp"
+            android:layout_weight="3.5"
             android:fontFamily="@font/schoolbell"
             android:gravity="center"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textSize="35sp" />
 
 
 
