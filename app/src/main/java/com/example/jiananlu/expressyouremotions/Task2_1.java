@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,6 +14,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
+import android.text.style.TypefaceSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -90,13 +92,17 @@ public class Task2_1 extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    // make the toast message with bigger font size and pink background
+                    // make the toast message with bigger schoolbell font size and pink background
+                    Typeface typeface = Typeface.createFromAsset(getAssets(), "Schoolbell.ttf");
                     String msg = "Please take a picture!";
                     SpannableStringBuilder biggerText = new SpannableStringBuilder(msg);
                     biggerText.setSpan(new RelativeSizeSpan(2.0f), 0, msg.length(), 0);
+                    biggerText.setSpan(new TypefaceSpan(typeface), 0, msg.length(), 0);
                     Toast toast = Toast.makeText(getApplicationContext(), biggerText, Toast.LENGTH_SHORT);
                     View toast_view = toast.getView();
-                    toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    //toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    // change background of the toast message to be light green
+                    toast_view.getBackground().setColorFilter(Color.parseColor("#D5E29F"), PorterDuff.Mode.SRC_IN);
                     toast.show();
                 }
             }

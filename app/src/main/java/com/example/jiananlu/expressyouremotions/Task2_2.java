@@ -8,11 +8,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
+import android.text.style.TypefaceSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -175,24 +177,33 @@ public class Task2_2 extends AppCompatActivity {
                     else {
                         visual_support.setImageResource(R.drawable.try_again_text);
                     }
-
-                    // make the toast message with bigger font size and pink background
-                    SpannableStringBuilder biggerText = new SpannableStringBuilder(emotion);
-                    biggerText.setSpan(new RelativeSizeSpan(2.0f), 0, emotion.length(), 0);
+                    String emotion_msg = "You made a " + emotion + " face.";
+                    // make the toast message with bigger schoolbell font size and pink background
+                    Typeface typeface = Typeface.createFromAsset(getAssets(), "Schoolbell.ttf");
+                    SpannableStringBuilder biggerText = new SpannableStringBuilder(emotion_msg);
+                    biggerText.setSpan(new RelativeSizeSpan(2.0f), 0, emotion_msg.length(), 0);
+                    biggerText.setSpan(new TypefaceSpan(typeface), 0, emotion_msg.length(), 0);
                     Toast toast = Toast.makeText(getApplicationContext(), biggerText, Toast.LENGTH_SHORT);
                     View toast_view = toast.getView();
-                    toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    //toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    // change background of the toast message to be light green
+                    toast_view.getBackground().setColorFilter(Color.parseColor("#D5E29F"), PorterDuff.Mode.SRC_IN);
                     toast.show();
                 } catch (Exception e) {
                     e.printStackTrace();
                     visual_support.setImageResource(R.drawable.try_again_text);
 
+                    // make the toast message with bigger schoolbell font size and pink background
+                    Typeface typeface = Typeface.createFromAsset(getAssets(), "Schoolbell.ttf");
                     String message = "Not Quite! Click next face and retry!";
                     SpannableStringBuilder biggerText = new SpannableStringBuilder(message);
                     biggerText.setSpan(new RelativeSizeSpan(2.0f), 0, message.length(), 0);
+                    biggerText.setSpan(new TypefaceSpan(typeface), 0, message.length(), 0);
                     Toast toast = Toast.makeText(getApplicationContext(), biggerText, Toast.LENGTH_SHORT);
                     View toast_view = toast.getView();
-                    toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    //toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    // change background of the toast message to be light green
+                    toast_view.getBackground().setColorFilter(Color.parseColor("#D5E29F"), PorterDuff.Mode.SRC_IN);
                     toast.show();
                 }
             }

@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
+import android.text.style.TypefaceSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -228,14 +230,17 @@ public class Task3_question extends AppCompatActivity {
                 }
                 // else, stay in the current page and display helpful messages
                 else {
-                    // make the toast message with bigger font size and pink background
+                    // make the toast message with bigger schoolbell font size and pink background
+                    Typeface typeface = Typeface.createFromAsset(getAssets(), "Schoolbell.ttf");
                     SpannableStringBuilder biggerText = new SpannableStringBuilder(msg);
                     biggerText.setSpan(new RelativeSizeSpan(2.0f), 0, msg.length(), 0);
+                    biggerText.setSpan(new TypefaceSpan(typeface), 0, msg.length(), 0);
                     Toast toast = Toast.makeText(getApplicationContext(), biggerText, Toast.LENGTH_SHORT);
                     View toast_view = toast.getView();
-                    toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    //toast_view.getBackground().setColorFilter(Color.parseColor("#FFCAEA"), PorterDuff.Mode.SRC_IN);
+                    // change background of the toast message to be light green
+                    toast_view.getBackground().setColorFilter(Color.parseColor("#D5E29F"), PorterDuff.Mode.SRC_IN);
                     toast.show();
-                    //Toast.makeText(getApplicationContext(), msg,Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -264,7 +269,6 @@ public class Task3_question extends AppCompatActivity {
                     else {
                         child.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
                     }
-                    //Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -278,6 +282,7 @@ public class Task3_question extends AppCompatActivity {
 
     private String check_answers(){
         int count = 0;
+        int correct_ones  = 0;
         List<Boolean> checked = new ArrayList<>();
         for (int i = 0; i < mainGrid.getChildCount(); i++) {
             final CardView child = (CardView) mainGrid.getChildAt(i);
@@ -289,17 +294,49 @@ public class Task3_question extends AppCompatActivity {
             }
         }
 
-        if (count != num_correct_answers) {
-            return "Select " + num_correct_answers + " Faces!";
+        // improve the warning message to be in a gradient manner
+        if (count == 0) {
+            return "Select " + num_correct_answers + " faces!";
+        }
+        else if (count < num_correct_answers) {
+            return "Pick " + (num_correct_answers - count) + " more faces!";
+
+        }
+        else if (count > num_correct_answers) {
+            return "Pick only " + (num_correct_answers) + " faces!";
+
         }
         else {
             if (checked.equals(correct_answers)){
                 return "correct";
             }
             else {
-                return "Try Again";
+                for (int i = 0; i < mainGrid.getChildCount(); i++) {
+                    final CardView child = (CardView) mainGrid.getChildAt(i);
+                    if (child.getCardBackgroundColor().getDefaultColor() != -1) {
+                        if (correct_answers.get(i) == true) {
+                            correct_ones += 1;
+                        }
+                        else {
+                            // unselect incorrect answers by refreshing their backgrounds back to be white
+                            child.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+                        }
+                    }
+                }
+                return "You got " + correct_ones + " correct! Pick " + (num_correct_answers - correct_ones) + " more!";
             }
         }
+//        if (count != num_correct_answers) {
+//            return "Select " + num_correct_answers + " Faces!";
+//        }
+//        else {
+//            if (checked.equals(correct_answers)){
+//                return "correct";
+//            }
+//            else {
+//                return "Try Again";
+//            }
+//        }
     }
 }
 
