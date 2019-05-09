@@ -1,21 +1,51 @@
-# team-project-team6
-team-project-team6 created by GitHub Classroom
+# Welcome to Express Your Emotions (Team 6)!
 
-To build and run this project, all you need to do is downloading all the files in this repo and running it in Android Studio with either an emulator or an Android device.
+![alt text](https://github.com/cs160-spring2019/team-project-team6/blob/master/app/src/main/res/drawable-v24/homepage.png "Landing Page of Our App")
 
+## Summary
 
+Studies have shown that children with Autism Spectrum Disorder (ASD) often have difficulty detecting, recognizing, and correlating emotions from facial expressions.
+This cognitive impairment tends to worsen with age.
+Our app targets at high-functioning autistic children who have the ability to read and comprehend words. 
+It aims to provide a platform for children with ASD to learn emotional facial expressions in a fun and engaging way. 
+In addition, our app can be used as a educational tool that instructors can use to help aid these children in learning so.
 
-Problem
+## Installation
 
-Studies have shown that children with Autism Spectrum Disorder (ASD) often have difficulty detecting, recognizing, and correlating emotions from facial expressions; this cognitive impairment tends to worsen with age. This makes integrating them into society a challenge.
+First, download this entire git repository.
 
-Target User Group
+Then, open this application in Android Studio and try to build it. 
 
-High-functioning autistic children of third grade or higher, with the ability to read and comprehension of their reading, and their instructors.
+Resolve any issues during the build. You may need to follow error messages to install any required dependency or library. Make sure the app is successfully built. 
 
-Solution
+Finally, run this application on either an Android emulator or a real Android device. 
 
-We aid autistic children in learning to express emotion through three simple tasks. 
-Learn emotions through flashcards. 
-Practice emoting through a facial recognition game. 
-Take a multiple-choice quiz on emotion to test their knowledge.
+## Code Structure
+
+Our app consists of 3 major tasks:
+    
+    1. Learn Your Emotions
+    
+    It shows kids flashcards of different emotional cartoon faces and has them **learn** the definition of each emotion.
+
+    2. Face Matching Game
+
+    In this game, the kids will first select an emotion that they want to mimic, and **play** with our app by using the camera to take a selfie of their own face.
+    The API will then inform them whether they make the right facial expression or not. 
+
+    3. Emotion Quiz
+
+    After the kids have a good grasp of different emotions and their corresponding facial expressions, they can **test** their knowledge in this section. 
+    The Emotion Quiz prepares a series of multiple-choice questions, consisting of cartoon faces and characters.
+
+## Acknowledgement
+
+The majority of images come from https://www.pinclipart.com/, while the rest are from the open Internet. 
+Please contact us if they violate any copyrights.
+
+We use Microsoft's Face and Emotion Recognition API to implement task 2. 
+Our app will not store your photos.
+And we, as developers, will not be able to see or have access to them.
+However, it will send your photos to Microsoft for evaluation. 
+For more details about how Microsoft handles your data, refer to https://github.com/microsoft/cognitive-Face-Android, https://azure.microsoft.com/en-us/services/cognitive-services/face/ and its homepage.
+Please let us know if you believe there is any privacy concerns or violations about this API. 

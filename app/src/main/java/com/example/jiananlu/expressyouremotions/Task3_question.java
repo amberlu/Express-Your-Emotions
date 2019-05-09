@@ -294,23 +294,24 @@ public class Task3_question extends AppCompatActivity {
             }
         }
 
-        // improve the warning message to be in a gradient manner
-        if (count == 0) {
+
+        if (count == 0) { // if users select no images, inform them to pick a total number of correct images
             return "Select " + num_correct_answers + " faces!";
         }
-        else if (count < num_correct_answers) {
+        else if (count < num_correct_answers) { // if users select less than the number of correct images, inform them to pick enough ones
             return "Pick " + (num_correct_answers - count) + " more faces!";
 
         }
-        else if (count > num_correct_answers) {
+        else if (count > num_correct_answers) { // if users select more than the number of correct images, inform them the limit
             return "Pick only " + (num_correct_answers) + " faces!";
 
         }
-        else {
-            if (checked.equals(correct_answers)){
+        else { // if users select exactly the number of correct images
+            if (checked.equals(correct_answers)){ // if they are correct
                 return "correct";
             }
             else {
+                // otherwise, improve the warning message to be in a gradient manner
                 for (int i = 0; i < mainGrid.getChildCount(); i++) {
                     final CardView child = (CardView) mainGrid.getChildAt(i);
                     if (child.getCardBackgroundColor().getDefaultColor() != -1) {
@@ -318,11 +319,13 @@ public class Task3_question extends AppCompatActivity {
                             correct_ones += 1;
                         }
                         else {
+
                             // unselect incorrect answers by refreshing their backgrounds back to be white
                             child.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
                         }
                     }
                 }
+                // inform them the number of correct images they've picked so far, and the extra ones they need to select
                 return "You got " + correct_ones + " correct! Pick " + (num_correct_answers - correct_ones) + " more!";
             }
         }
