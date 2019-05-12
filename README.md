@@ -10,16 +10,6 @@ Our app targets at high-functioning autistic children who have the ability to re
 It aims to provide a platform for children with ASD to learn emotional facial expressions in a fun and engaging way. 
 In addition, our app can be used as a educational tool that instructors use to aid these children in learning so.
 
-## Installation
-
-First, download this entire Git repository.
-
-Then, open this application in Android Studio and try to build it. 
-
-Resolve any issues during the build. You may need to follow error messages to install any required dependency or library. Make sure the app is successfully built. 
-
-Finally, run this application on either an Android emulator or a real Android device. 
-
 ## Code Structure
 
 Our app consists of 3 major tasks:
@@ -37,6 +27,18 @@ The app will then inform them whether they make the right facial expression or n
 
 After the kids have a good grasp of different emotions and the corresponding facial expressions, they can **test** their knowledge here. 
     The Emotion Quiz prepares a series of multiple-choice questions, which display cartoon characters and faces.
+
+## Installation
+
+First, download this entire Git repository.
+
+Then, open this application in Android Studio and try to build it. 
+
+Resolve any issues during the build. You may need to follow error messages to install any required dependency or library. Make sure the app is successfully built. 
+
+Finally, run this application on either an Android emulator or a real Android device. 
+
+Note: To successfully use the emotion recognition API in Task 2, one needs to run our app on a real Android device and make sure it is connected to the Internet. 
 
 ## Acknowledgement
 
